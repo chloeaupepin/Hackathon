@@ -13,15 +13,15 @@ model <- function(t, pop, param){
     alpha_s_w_R = roR
     alpha_s_w_G = roG
     
-    # ev = evaporation ; Temp = temperature
-    alpha_w_a = ev*Temp
+    # ev = evaporation ; Temp = temperature ; Tref = temperature de référence
+    alpha_w_a = ev*Temp/Tref
     
-    # r = rain drop from air ; R = rainfall
-    alpha_a_w = r * R
-    alpha_a_s = r * R
+    # r = rain drop from air ; R = rainfall ; Ref = rainfall de reference 
+    alpha_a_w = r * R/Ref
+    alpha_a_s = r * R/Ref
     
-    # wind ; H = air humidity
-    alpha_s_a = wind * H
+    # wind ; H = air humidity ; Href = humidité de référence
+    alpha_s_a = wind * H/Href
     
     
     dS_s <- -S_s*betas*hs*G_s + gammas*R_s - mus*S_s + gsS*S_s + alpha_w_s_S*S_w + alpha_a_s*S_a 
